@@ -52,9 +52,9 @@ def choice_school_interface(school_name, student_name):
 
 def check_course_list_interface(student_name):
     student_obj = models.Student.check_obj(student_name)
-    school_obj = models.School.check_obj(student_obj.school_name)
     if not student_obj.school_name:
         return False, f'学生{student_name}暂未选择学校,请先选择学校'
+    school_obj = models.School.check_obj(student_obj.school_name)
     return True, school_obj.course_list
 
 

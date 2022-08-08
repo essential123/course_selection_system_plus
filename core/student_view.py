@@ -48,6 +48,7 @@ def choice_course():
     flag, course_list = student_interface.check_course_list_interface(user_status.get('name'))
     if not flag:
         print(course_list)
+        return 
     if not course_list:
         print('当前暂无课程可供选择')
         return
@@ -96,7 +97,7 @@ func_dict = {
 def run():
     while True:
         print('''
-        ----------------管理员试图-----------------
+        ----------------学生视图-----------------
         1.学生注册功能
         2.学生登录功能
         3.学生选择学校
