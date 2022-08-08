@@ -45,6 +45,9 @@ def create_course():
     target_school_id = input('请输入您想要的创建课程的学校编号（输入q或者空退出）>>:').strip()
     if target_school_id == 'q' or target_school_id == '':
         return
+    if not target_school_id.isdigit():
+        print('输入编号不合法，请输入纯数字')
+        return
     target_school_id = int(target_school_id)
     if target_school_id not in range(1, len(school_list) + 1):
         print('输入的学校编号不存在')

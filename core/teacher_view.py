@@ -10,6 +10,9 @@ def login():
     teacher_name = input('请输入您的用户名>>:').strip()
     pwd = input('请输入您的密码>>:').strip()
     if teacher_name and pwd:
+        if not pwd.isdigit():
+            print('输入编号不合法，请输入纯数字')
+            return
         pwd = int(pwd)
         flag, msg = teacher_interface.login_interface(teacher_name, pwd)
         print(msg)
@@ -27,6 +30,9 @@ def choice_teach_course():
         print(f'{course_id},{course_name}')
     target_course_id = input('请输入您想要的选择课程编号（输入q或者空退出）>>:').strip()
     if target_course_id == 'q' or target_course_id == '':
+        return
+    if not target_course_id.isdigit():
+        print('输入编号不合法，请输入纯数字')
         return
     target_course_id = int(target_course_id)
     if target_course_id not in range(1, len(course_list) + 1):
@@ -58,6 +64,7 @@ def check_course_student():
     target_course_id = input('请输入您想要查看的课程编号（输入q或者空退出）>>:').strip()
     if target_course_id == 'q' or target_course_id == '':
         return
+    
     target_course_id = int(target_course_id)
     if target_course_id not in range(1, len(course_list) + 1):
         print('输入的课程编号不存在')
@@ -78,12 +85,15 @@ def update_course_score():
     target_course_id = input('请输入您想要查看的课程编号（输入q或者空退出）>>:').strip()
     if target_course_id == 'q' or target_course_id == '':
         return
+    if not target_course_id.isdigit():
+        print('输入编号不合法，请输入纯数字')
+        return
     target_course_id = int(target_course_id)
     if target_course_id not in range(1, len(course_list) + 1):
         print('输入的课程编号不存在')
         return
     target_course_name = course_list[target_course_id - 1]
-    flag, course_student_list = teacher_interface.check_course_student_interface(target_course_name)
+    flag, course_student_list = teacher_interface.check_course_student_interface(target_course_name,user_status.get('name'))
     if not flag:
         print(course_student_list)
         return
@@ -95,6 +105,9 @@ def update_course_score():
         print('输入不能为空')
         return
     if course_student_id == 'q' or course_student_id == '':
+        return
+    if not course_student_id.isdigit():
+        print('输入编号不合法，请输入纯数字')
         return
     course_student_id = int(course_student_id)
     if course_student_id not in range(1, len(course_student_list) + 1):

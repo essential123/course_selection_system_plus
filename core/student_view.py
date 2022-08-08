@@ -34,6 +34,9 @@ def choice_school():
     target_school_id = input('请输入您想要的选择的学校编号>>:').strip()
     if target_school_id == 'q' or target_school_id == '':
         return
+    if not target_school_id.isdigit():
+        print('输入编号不合法，请输入纯数字')
+        return 
     target_school_id = int(target_school_id)
     if target_school_id not in range(1, len(school_list) + 1):
         print('输入的学校编号不存在')
@@ -57,6 +60,9 @@ def choice_course():
     target_course_id = input('请输入您想要的选择课程编号>>:').strip()
     if target_course_id == 'q' or target_course_id == '':
         return
+    if not target_course_id.isdigit():
+        print('输入编号不合法，请输入纯数字')
+        return 
     target_course_id = int(target_course_id)
     if target_course_id not in range(1, len(course_list) + 1):
         print('输入的课程编号不存在')
@@ -77,6 +83,9 @@ def check_score():
     target_course_id = input('请输入您想要的查询的课程编号>>:').strip()
     if target_course_id == 'q' or target_course_id == '':
         return
+    if not target_course_id.isdigit():
+        print('输入编号不合法，请输入纯数字')
+        return 
     target_course_id = int(target_course_id)
     if target_course_id not in range(1, len(course_list) + 1):
         print('输入的课程编号不存在')
